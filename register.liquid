@@ -1,0 +1,149 @@
+<section data-section-id="reset-password" data-section-type="reset-password">
+  <div class="Container">
+    <div class="PageContent PageContent--fitScreen PageContent--extraNarrow">
+      {%- form 'create_customer', name: 'create_customer', class: 'Form Form--spacingTight', id: 'create_customer' -%}
+        <header class="Form__Header">
+          <h1 class="Form__Title Heading u-h1">{{ 'customer.register.title' | t }}</h1>
+          <p class="Form__Legend">{{ 'customer.register.description' | t }}</p>
+        </header>
+        
+        {%- if form.errors -%}
+          <div class="Form__Alert Alert Alert--error">
+            <ul class="Alert__ErrorList">
+              {%- for field in form.errors -%}
+                {%- if field == 'form' -%}
+                  <li class="Alert__ErrorItem">{{ form.errors.messages[field] }}</li>
+                {%- else -%}
+                  <li class="Alert__ErrorItem"><strong>{{ form.errors.translated_fields[field] }}</strong> {{ form.errors.messages[field] }}</li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if request.locale.iso_code == 'ja' -%}
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="customer[last_name]" aria-label="{{ 'customer.register.last_name' | t }}" placeholder="{{ 'customer.register.last_name' | t }}" required="required">
+            <label class="Form__FloatingLabel">{{ 'customer.register.last_name' | t }}</label>
+          </div>
+
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="customer[first_name]" aria-label="{{ 'customer.register.first_name' | t }}" placeholder="{{ 'customer.register.first_name' | t }}" required="required" autofocus>
+            <label class="Form__FloatingLabel">{{ 'customer.register.first_name' | t }}</label>
+          </div>
+        {%- else -%}
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="customer[first_name]" aria-label="{{ 'customer.register.first_name' | t }}" placeholder="{{ 'customer.register.first_name' | t }}" required="required" autofocus>
+            <label class="Form__FloatingLabel">{{ 'customer.register.first_name' | t }}</label>
+          </div>
+
+          <div class="Form__Item">
+            <input type="text" class="Form__Input" name="customer[last_name]" aria-label="{{ 'customer.register.last_name' | t }}" placeholder="{{ 'customer.register.last_name' | t }}" required="required">
+            <label class="Form__FloatingLabel">{{ 'customer.register.last_name' | t }}</label>
+          </div>
+        {%- endif -%}
+      
+      <div class="Form__Item">
+            <input type="text" class="Form__Input" name="customer[note] customer[phone-number]" id="phone-number" placeholder="Phone Number*" required="required">
+            <label class="Form__FloatingLabel">Phone Number*</label>
+          </div>
+      
+       <div class="Form__Item">
+            <input type="text" class="Form__Input" name="customer[note] customer[street-address]" id="street-address" placeholder="Street Address*" required="required">
+            <label class="Form__FloatingLabel">Street Address*</label>
+          </div>
+      
+      <div class="row-register">
+       <div class="Form__Item column-register first">
+            <input type="text" class="Form__Input" name="customer[note] customer[city]" id="city" placeholder="City*" required="required">
+            <label class="Form__FloatingLabel">City*</label>
+          </div>
+      
+       <div class="Form__Item column-register">
+            <input type="text" class="Form__Input" name="customer[note] customer[state]" id="state" placeholder="State*" required="required">
+            <label class="Form__FloatingLabel">State*</label>
+          </div>
+      
+        <div class="Form__Item column-register last">
+            <input type="text" class="Form__Input" name="customer[note] customer[zip-code]" id="zip-code" placeholder="Zip Code*" required="required">
+            <label class="Form__FloatingLabel">Zip Code*</label>
+          </div>
+      </div>
+   
+         <div class="Form__Item">
+	        <select class="Form__Input" name="customer[note] customer[licenced-stylist]" id="licended-stylist" required="required">
+              <option value="">Are you a licensed Stylist?</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>      
+            </select>
+           <label class="Form__FloatingLabel">Are you a Licensed Stylist?*</label>
+           	
+		   <input type="hidden" id="customer_tag" name="customer[tags]" value=""/>
+           
+	      </div>
+      
+      <div class="Form__Item">
+            <input type="text" class="Form__Input" name="customer[note] customer[license-number]" id="license-number" placeholder="License Number*">
+            <label class="Form__FloatingLabel">License Number*</label>
+          </div>
+
+      
+       <div class="Form__Item">
+              <select class="Form__Input" name="customer[note] customer[certified]" id="certified">
+                <option value="">Are you certified in Mago Knot Method or Keratin Bonds?</option>
+                <option value="Mago Knot Method">Mago Knot Method</option>
+                <option value="Keratin Bonds">Keratin Bonds</option>
+                <option value="Both Mago Knot Method & Keratin Bonds">Mago Knot Method & Keratin Bonds</option>
+                <option value="Neither">Neither</option>
+              </select>
+         <label class="Form__FloatingLabel">Are you certified in Mago Knot Method or Keratin Bonds*</label>
+            </div>
+      
+      <div class="Form__Item">
+            <input type="text" class="Form__Input" name="customer[note] customer[salon]" id="salon" placeholder="Salon Name (Optional)">
+            <label class="Form__FloatingLabel">Salon Name</label>
+          </div>
+        
+      <div class="Form__Item">
+            <input type="text" class="Form__Input" name="customer[note] customer[social-media-handle]" id="social-media-handle" placeholder="Instagram or Facebook Handle">
+            <label class="Form__FloatingLabel">Instagram or Facebook Handle</label>
+          </div>
+      
+      <div class="Form__Item">
+            <input type="text" class="Form__Input" name="customer[note] customer[hair-extensions]" id="hair-extensions" placeholder="Current hair extension services you offer">
+            <label class="Form__FloatingLabel">Current hair extension services you offer</label>
+          </div>
+      
+      <div class="Form__Item">
+            <input type="text" class="Form__Input" name="customer[note] customer[brands]" id="brands" placeholder="What Brands are you currently using?">
+            <label class="Form__FloatingLabel">What Brands are you currently using?</label>
+          </div>
+      
+        <div class="Form__Item">
+          <input type="email" class="Form__Input" name="customer[email]" aria-label="{{ 'customer.register.email' | t }}" placeholder="{{ 'customer.register.email' | t }}" required="required">
+          <label class="Form__FloatingLabel">{{ 'customer.register.email' | t }}</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="password" class="Form__Input" name="customer[password]" aria-label="{{ 'customer.register.password' | t }}" placeholder="{{ 'customer.register.password' | t }}" required="required">
+          <label class="Form__FloatingLabel">{{ 'customer.register.password' | t }}</label>
+        </div>
+      
+      <div id="accept" class="clearfix form-row">
+<input type="hidden" name="customer[accepts_marketing]" value="true"/>
+<input type="hidden" name="customer[accepts_marketing]" id="accepts_marketing" class="{% if form.errors contains 'email' %} error{% endif %}" value="true" /></div>
+      
+
+      <p>* all fields are required</p>
+        <button type="submit" style="" class="Form__Submit Button Button--primary Button--full">{{ 'customer.register.submit' | t }}</button>
+       {%- endform -%}
+    </div>
+  </div>
+</section>
+
+
+
+
+
+ 
+        
